@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-
 import './main.scss';
+import 'font-awesome/scss/font-awesome.scss';
+import 'roboto-fontface/css/roboto/sass/roboto-fontface.scss';
 
 const App = () => (
 	<div className="container">

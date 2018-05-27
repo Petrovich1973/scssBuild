@@ -1,0 +1,40 @@
+{
+    "name": "scss",
+    "version": "1.0.0",
+    "description": "",
+    "main": "./src/app.js",
+    "scripts": {
+        "start": "webpack -p",
+        "dev": "webpack --watch --colors -d"
+    },
+    "keywords": [
+        "scss",
+        "webpack",
+        "postcss"
+    ],
+    "author": "tank",
+    "license": "ISC",
+    "dependencies": {},
+    "devDependencies": {
+        "babel-core": "^6.26.3",
+        "babel-loader": "^7.1.4",
+        "babel-preset-es2015": "^6.24.1",
+        "babel-preset-react": "^6.24.1",
+        "babel-preset-stage-0": "^6.24.1",
+        "babel-preset-stage-1": "^6.24.1",
+        "bootstrap": "^4.1.1",
+        "bootstrap-sass": "^3.3.7",
+        "css-loader": "^0.28.11",
+        "extract-text-webpack-plugin": "^4.0.0-beta.0",
+        "file-loader": "^1.1.11",
+        "node-sass": "^4.9.0",
+        "postcss-loader": "^2.1.5",
+        "react": "^16.4.0",
+        "react-dom": "^16.4.0",
+        "resolve-url-loader": "^2.3.0",
+        "sass-loader": "^7.0.1",
+        "style-loader": "^0.21.0",
+        "webpack": "^4.9.1",
+        "webpack-cli": "^2.1.4"
+    }
+}

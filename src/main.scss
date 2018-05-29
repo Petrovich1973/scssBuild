@@ -17,17 +17,24 @@ body {
 }
 
 .table thead th {
-    min-width: 10rem;
+    min-width: 7rem;
     user-select: none;
     &:first-child {
-    	min-width: 0;
-    	width: 1px;
+        min-width: 0;
+        width: 1px;
+        text-align: right;
     }
     .fa-fw {
-    	width: auto;
-    	padding-right: .14rem;
+        width: auto;
+        padding-right: .14rem;
     }
     .fa-sort {
-    	opacity: .5;
+        opacity: .5;
+    }
+}
+
+.table tbody td {
+    &:first-child {
+        text-align: right;
     }
 }

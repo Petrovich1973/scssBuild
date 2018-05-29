@@ -1,54 +1,105 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import { TEXT, DATA } from './data.js';
+
 import './main.scss';
 import 'font-awesome/scss/font-awesome.scss';
 import 'roboto-fontface/css/roboto/sass/roboto-fontface.scss';
 
-const App = () => (
-	<div className="container">
-		<h2>Start editing to see some magic happen {'\u2728'}</h2>
 
+class App extends React.Component {
+
+	constructor(props) {
+		super(props);
+		this.state = this.initialState = {
+			dateTime: ''
+		};
+		this.tick = this.tick.bind(this);
+	}
+
+	componentDidMount() {
+		this.tick();
+	}
+
+	componentWillUpdate() {
+		setTimeout( this.tick, 1000 );
+	}
+
+	tick() {
+		this.setState({
+			dateTime: <div className="d-flex flex-row">
+				<span className="align-self-center d-flex flex-row">
+					<small className="align-self-center"><i className='fa fa-calendar'/></small>&nbsp;
+					<span className="align-self-center">{ `${new Date().toLocaleDateString()}`}</span>
+				</span>
+				&nbsp;&nbsp;
+				<span className="align-self-center d-flex flex-row">
+					<small className="align-self-center"><i className='fa fa-clock-o'/></small>&nbsp;
+					<span className="align-self-center">{`${new Date().toLocaleTimeString()}`}</span>
+				</span>
+			</div>
+		});
+	}
+
+	render() {
+		return (
+			<div>
+				<div className="container">
+					<h6 className="display-10">{ this.state.dateTime }</h6>
+				</div>
+				<Table content={DATA} />
+			</div>			
+		);
+	}
+}
+
+const Table = (props) => (
+	<div className="container">		
+		<ul className="nav justify-content-end">
+			<li className="nav-item">
+				<a className="nav-link active" href="#">Active</a>
+			</li>
+			<li className="nav-item">
+				<a className="nav-link" href="#">Link</a>
+			</li>
+			<li className="nav-item">
+				<a className="nav-link" href="#">Link</a>
+			</li>
+			<li className="nav-item">
+				<a className="nav-link disabled" href="#">Disabled</a>
+			</li>
+		</ul>
+		<h2>{TEXT} {'\u2728'}</h2>
+		<p className="lead">
+			Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus.
+		</p>
 		<div className="table-responsive">
 			<table className="table table-striped table-sm">
 				<thead>
 					<tr>
-						<th>#</th>
-						<th><i className="fa fa-fw fa-sort-down"/> name col 1</th>
-						<th><i className="fa fa-fw fa-sort"/> name col 2</th>
-						<th><i className="fa fa-fw fa-sort"/> name col 3</th>
-						<th><i className="fa fa-fw fa-sort"/> name col 4</th>
+						{props.content.head.sort((a, b) => {
+							return a.id - b.id
+						}).map((th, a) => {
+							let iconDirection = props.content.sort.direction === 'ASK' ? <i className="fa fa-fw fa-sort-down"/> : <i className="fa fa-fw fa-sort-up"/>;
+							return <th key={a}>{props.content.sort.name === th.param ? 
+								iconDirection : 
+								th.name !== '#' ?
+								<i className="fa fa-fw fa-sort"/> :
+								null} {th.name}</th>
+						})}
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>1</td>
-						<td>content col 1</td>
-						<td>content col 2</td>
-						<td>content col 3</td>
-						<td>delectus enim cumque rque magni, nam ea quaerat ullam!</td>
-					</tr>
-					<tr>
-						<td>2</td>
-						<td>content col 1</td>
-						<td>content col 2 quaerat ullam!</td>
-						<td>content col 3</td>
-						<td>content col 4</td>
-					</tr>
-					<tr>
-						<td>3</td>
-						<td>content col 1</td>
-						<td>content col 2</td>
-						<td>delectus enim cumque rque magni, nam ea quaerat ea quaerat ullam!</td>
-						<td>content col 4</td>
-					</tr>
-					<tr>
-						<td>4</td>
-						<td>delectus enim cumque rque magni, nam ea quaerat ullam!</td>
-						<td>content col 2</td>
-						<td>content col 3</td>
-						<td>content col 4</td>
-					</tr>
+					{props.content.body.map((tr, a) => {
+						return <tr key={a}>
+							{props.content.head.sort((a, b) => {
+								return a.id - b.id
+							}).map((td, b) => {
+								return <td key={b}>{tr[td.param]}</td>
+							})}
+						</tr>
+					})}
 				</tbody>
 			</table>
 		</div>

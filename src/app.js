@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import Table from './Table';
+
 import { TEXT, DATA } from './data.js';
 
 import './main.scss';
@@ -45,65 +47,46 @@ class App extends React.Component {
 	render() {
 		return (
 			<div>
+
 				<div className="container">
 					<h6 className="display-10">{ this.state.dateTime }</h6>
+				</div>	
+
+				<div className="container">					
+					<ul className="nav justify-content-end">
+						<li className="nav-item">
+							<a className="nav-link active" href="#">Active</a>
+						</li>
+						<li className="nav-item">
+							<a className="nav-link" href="#">Link 1</a>
+						</li>
+						<li className="nav-item">
+							<a className="nav-link" href="#">Link 2</a>
+						</li>
+						<li className="nav-item">
+							<a className="nav-link disabled" href="#">Disabled</a>
+						</li>
+					</ul>
 				</div>
-				<Table content={DATA} />
+
+				<Table content={DATA} text={TEXT} />
+
+				<div className="container">
+					<div className="p-3 mb-2 bg-primary text-white">.bg-primary</div>
+					<div className="p-3 mb-2 bg-secondary text-white">.bg-secondary</div>
+					<div className="p-3 mb-2 bg-success text-white">.bg-success</div>
+					<div className="p-3 mb-2 bg-danger text-white">.bg-danger</div>
+					<div className="p-3 mb-2 bg-warning text-dark">.bg-warning</div>
+					<div className="p-3 mb-2 bg-info text-white">.bg-info</div>
+					<div className="p-3 mb-2 bg-light text-dark">.bg-light</div>
+					<div className="p-3 mb-2 bg-dark text-white">.bg-dark</div>
+					<div className="p-3 mb-2 bg-white text-dark">.bg-white</div>
+				</div>
 			</div>			
 		);
 	}
-}
+};
 
-const Table = (props) => (
-	<div className="container">		
-		<ul className="nav justify-content-end">
-			<li className="nav-item">
-				<a className="nav-link active" href="#">Active</a>
-			</li>
-			<li className="nav-item">
-				<a className="nav-link" href="#">Link</a>
-			</li>
-			<li className="nav-item">
-				<a className="nav-link" href="#">Link</a>
-			</li>
-			<li className="nav-item">
-				<a className="nav-link disabled" href="#">Disabled</a>
-			</li>
-		</ul>
-		<h2>{TEXT} {'\u2728'}</h2>
-		<p className="lead">
-			Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus.
-		</p>
-		<div className="table-responsive">
-			<table className="table table-striped table-sm">
-				<thead>
-					<tr>
-						{props.content.head.sort((a, b) => {
-							return a.id - b.id
-						}).map((th, a) => {
-							let iconDirection = props.content.sort.direction === 'ASK' ? <i className="fa fa-fw fa-sort-down"/> : <i className="fa fa-fw fa-sort-up"/>;
-							return <th key={a}>{props.content.sort.name === th.param ? 
-								iconDirection : 
-								th.name !== '#' ?
-								<i className="fa fa-fw fa-sort"/> :
-								null} {th.name}</th>
-						})}
-					</tr>
-				</thead>
-				<tbody>
-					{props.content.body.map((tr, a) => {
-						return <tr key={a}>
-							{props.content.head.sort((a, b) => {
-								return a.id - b.id
-							}).map((td, b) => {
-								return <td key={b}>{tr[td.param]}</td>
-							})}
-						</tr>
-					})}
-				</tbody>
-			</table>
-		</div>
-	</div>
-);
+
 
 ReactDOM.render( <App />, document.getElementById('root') );

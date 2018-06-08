@@ -42,8 +42,14 @@ $body-color: #111;
 
 // $font-family-sans-serif: 'Roboto';
 
+$font-weight-light:         100 !default;
+
 
 @import 'bootstrap/scss/bootstrap.scss';
+
+.font-light {
+    font-weight: $font-weight-light;
+}
 
 
 .table-sm {

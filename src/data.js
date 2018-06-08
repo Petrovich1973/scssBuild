@@ -2,15 +2,15 @@ export const TEXT = 'Как воткнуть Реакт в существующ�
 
 export const DATA = {
 	sort: {
-		direction: 'ASK',
+		direction: 'DESK',
 		name: 'name'
 	},
 	head: [
-		{id: 1, param: 'id', name: '#'}, 
-		{id: 2, param: 'name', name: 'Имя'}, 
-		{id: 3, param: 'age', name: 'Возраст'}, 
-		{id: 4, param: 'status', name: 'Статус'}, 
-		{id: 5, param: 'description', name: 'Описание'}
+		{id: 1, sorted: true, param: 'id', name: '#'}, 
+		{id: 2, sorted: true, param: 'name', name: 'Имя'}, 
+		{id: 3, sorted: true, param: 'age', name: 'Возраст'}, 
+		{id: 4, sorted: true, param: 'status', name: 'Статус'}, 
+		{id: 5, sorted: true, param: 'description', name: 'Описание'}
 	],
 	body: [
 		{

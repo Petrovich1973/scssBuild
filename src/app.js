@@ -30,7 +30,7 @@ class App extends React.Component {
 
 	tick() {
 		this.setState({
-			dateTime: <div className="d-flex flex-row">
+			dateTime: <span className="d-flex flex-row">
 				<span className="align-self-center d-flex flex-row">
 					<small className="align-self-center"><i className='fa fa-calendar'/></small>&nbsp;
 					<span className="align-self-center">{ `${new Date().toLocaleDateString()}`}</span>
@@ -40,7 +40,7 @@ class App extends React.Component {
 					<small className="align-self-center"><i className='fa fa-clock-o'/></small>&nbsp;
 					<span className="align-self-center">{`${new Date().toLocaleTimeString()}`}</span>
 				</span>
-			</div>
+			</span>
 		});
 	}
 

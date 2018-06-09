@@ -16,7 +16,7 @@ export const DATA = {
 		{
 			id: 1,
 			name: 'Vasily',
-			age: 23,
+			age: null,
 			status: 'delectus enim cumque rque magni, nam ea quaerat ullam!',
 			description: 'delectus enim cumque rque magni, nam ea quaerat ea quaerat rque magni, nam ea quaerat ea quaerat ullam!'
 		},

@@ -7,6 +7,13 @@ class Table extends React.Component {
 		this.state = this.initialState = {};
 	}
 
+	calculation(list, name) {
+		var initialValue = 0;
+		return list.reduce((accumulator, currentValue) => {
+		    return accumulator + currentValue[name];
+		},initialValue)
+	}
+
 	render() {
 
 		const { head, body, sort } = this.props.content;
@@ -39,6 +46,14 @@ class Table extends React.Component {
 							</tr>
 						})}
 					</tbody>
+					<tfoot>
+						<tr>
+							<td colSpan="2">Итого</td>
+							<td colSpan="3">
+								{this.calculation(body, 'age')}
+							</td>
+						</tr>
+					</tfoot>
 				</table>
 			</div>
 		);

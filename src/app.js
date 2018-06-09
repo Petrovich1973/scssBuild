@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import classnames from 'classnames';
 
 import Table from './Table';
 
@@ -15,9 +16,15 @@ class App extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = this.initialState = {
-			dateTime: ''
+			dateTime: 'Время',
+			className: {
+				'p-3': true,
+				'bg-primary text-white': true,
+				'bg-warning': false
+			}
 		};
 		this.tick = this.tick.bind(this);
+		this.handleClickH4 = this.handleClickH4.bind(this);
 	}
 
 	componentDidMount() {
@@ -26,6 +33,16 @@ class App extends React.Component {
 
 	componentWillUpdate() {
 		setTimeout( this.tick, 1000 );
+	}
+
+	handleClickH4() {
+		this.setState({
+			className: {
+				...this.state.className,
+				'bg-primary text-white': !this.state.className['bg-primary text-white'],
+				'bg-warning': !this.state.className['bg-warning']
+			}
+		})
 	}
 
 	tick() {
@@ -45,8 +62,11 @@ class App extends React.Component {
 	}
 
 	render() {
+		let className = classnames(this.state.className);
 		return (
 			<div className="container">
+
+				<h4 className={className} onClick={this.handleClickH4}>Кликни меня</h4>
 
 				<h6 className="display-10">{ this.state.dateTime }</h6>
 			

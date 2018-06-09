@@ -1,4 +1,5 @@
 import React from 'react';
+import classnames from 'classnames';
 
 class Table extends React.Component {
 
@@ -20,16 +21,19 @@ class Table extends React.Component {
 
 		const sortRow = head.sort((a, b) => a.id - b.id);
 
+		const total = this.calculation(body, 'age');
+
 		return (
 			<div className="table-responsive">
-				<table className="table table-striped table-sm">
+				<table className="table table-striped">
+
 					<thead>
 						<tr>
 							{sortRow.map((th, a) => {
 								let iconDirection = sort.direction === 'ASK' ? 
 													<i className="fa fa-fw fa-sort-down"/> : 
 													<i className="fa fa-fw fa-sort-up"/>;
-								return <th key={a}>{sort.name === th.param ? 
+								return <th key={a} className={th.param == 'age' ? 'text-right' : null}>{sort.name === th.param ? 
 									iconDirection : 
 									th.sorted ?
 									<i className="fa fa-fw fa-sort"/> :
@@ -37,23 +41,27 @@ class Table extends React.Component {
 							})}
 						</tr>
 					</thead>
+
 					<tbody>
 						{body.map((tr, a) => {
 							return <tr key={a}>
 								{sortRow.map((td, b) => {
-									return <td key={b}>{tr[td.param]}</td>
+									return <td key={b} className={td.param == 'age' ? 'text-right' : null}>{tr[td.param]}</td>
 								})}
 							</tr>
 						})}
 					</tbody>
+
 					<tfoot>
 						<tr>
 							<td colSpan="2">Итого</td>
-							<td colSpan="3">
-								{this.calculation(body, 'age')}
+							<td className={classnames('text-right', total < 100 ? 'table-success' : 'table-danger')}>
+								{total}
 							</td>
+							<td colSpan="2"/>
 						</tr>
 					</tfoot>
+
 				</table>
 			</div>
 		);

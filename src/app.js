@@ -1,6 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import classnames from 'classnames';
+import {Button, TextField, Icon} from '@material-ui/core';
+import AddIcon from '@material-ui/icons/Add';
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 import Table from './Table';
 
@@ -21,6 +25,14 @@ class App extends React.Component {
 				'p-3': true,
 				'bg-primary text-white': true,
 				'bg-warning': false
+			},
+			textField: {
+				marginLeft: 20,
+				marginRight: 20,
+				width: 200,
+			},
+			button: {
+				margin: '0 3px'
 			}
 		};
 		this.tick = this.tick.bind(this);
@@ -67,6 +79,36 @@ class App extends React.Component {
 			<div className="container">
 
 				<h4 className={className} onClick={this.handleClickH4}>Кликни меня</h4>
+
+			    <Button variant="contained" color="primary">
+					Hello World
+			    </Button>
+
+				<TextField
+				id="name"
+				label="Name"
+				style={this.state.textField}
+				value={'this.state.name'}
+				margin="normal"/>
+
+				<TextField
+				id="with-placeholder"
+				label="With placeholder"
+				placeholder="Placeholder"
+				style={this.state.textField}
+				margin="normal"/>
+
+				<div>
+					<Button variant="fab" color="primary" aria-label="add" style={this.state.button}>
+						<AddIcon />
+					</Button>
+					<Button variant="fab" color="secondary" aria-label="edit" style={this.state.button}>
+						<EditIcon />
+					</Button>
+					<Button variant="fab" disabled aria-label="delete" style={this.state.button}>
+						<DeleteIcon />
+					</Button>
+				</div>
 
 				<h6 className="display-10">{ this.state.dateTime }</h6>
 			

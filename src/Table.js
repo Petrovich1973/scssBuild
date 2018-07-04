@@ -1,6 +1,8 @@
 import React from 'react';
 import classnames from 'classnames';
 
+import './table.scss';
+
 class Table extends React.Component {
 
 	constructor(props) {

@@ -131,6 +131,8 @@ class App extends React.Component {
 
 				<Table content={DATA} />
 
+				<Table content={DATA} />
+
 				<div className="p-3 mb-2 bg-primary text-white">.bg-primary</div>
 				<div className="p-3 mb-2 bg-secondary text-white">.bg-secondary</div>
 				<div className="p-3 mb-2 bg-success text-white">.bg-success</div>

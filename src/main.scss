@@ -50,35 +50,3 @@ $font-weight-light:         100 !default;
 .font-light {
     font-weight: $font-weight-light;
 }
-
-
-.table-sm {
-	background-color: white;
-	font-size: .87rem;
-}
-
-.table thead th {
-    min-width: 7rem;
-    user-select: none;
-    &:first-child {
-        min-width: 0;
-        width: 1px;
-        text-align: right;
-    }
-    .fa-fw {
-        width: auto;
-        padding-right: .14rem;
-    }
-    .fa-sort {
-        opacity: .5;
-        & + * {
-            opacity: .7;
-        }
-    }
-}
-
-.table tbody td {
-    &:first-child {
-        text-align: right;
-    }
-}
